@@ -1,0 +1,24 @@
+const cart = () => {
+  const cartBtn = document.querySelector(".button-cart");
+  const cart = document.getElementById("modal-cart");
+  const closeBtn = cart.querySelector(".modal-close");
+
+  cartBtn.addEventListener("click", () => {
+    cart.style.display = "flex";
+  });
+
+  // closeBtn.addEventListener('click', () => {
+  //     cart.style.display = ''
+  // })
+  document.addEventListener("click", ({ target }) => {
+    if (
+      !target.closest(".overlay") ||
+      (target.closest(".modal") && !target.classList.contains("modal-close"))
+    ) {
+      return;
+    }
+    cart.style.display = "";
+  });
+};
+
+cart();
